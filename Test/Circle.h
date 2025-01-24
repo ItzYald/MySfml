@@ -1,9 +1,16 @@
 #pragma once
-#include "Drawable.h"
+#include "Figure.h"
 
-class Circle : public Drawable
+class Circle : public Figure
 {
+private:
+	float radius;
+
 public:
 	void draw(AbstractWindow& window){}
+
+	float getRadius();
+	void setFadius(float radius);
+
 };
 

@@ -4,25 +4,17 @@
 int SDL_main(int argc, char* argv[])
 {
     Window window = Window();
-    window.init();
 
-	SDL_Event e;
+	Rectangle rect = Rectangle();
+	rect.setPosition(Vector2f(100.f, 200.f));
+	rect.setSize(Vector2f(100, 50));
+    rect.setFillColor(Color(255, 0, 0));
 
     while (window.isOpen())
     {
-		while (SDL_PollEvent(&e))
-		{
-			if (e.type == SDL_QUIT)
-			{
-				window.quit();
-			}
-		}
-
-		Rectangle rect = Rectangle();
-		Circle circle = Circle();
+        window.dispatchEvents();
 
 		window.draw(rect);
-		//window.draw(circle);
 
 		window.display();
     }
