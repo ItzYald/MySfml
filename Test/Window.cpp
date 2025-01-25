@@ -88,6 +88,7 @@ void Window::drawCircle(Circle& circle)
 	SDL_SetRenderDrawColor(renderer,
 		borderColor.r, borderColor.g, borderColor.b, borderColor.a);
 
+	// Draw border circle Y
 	for (float x = -radius; x < radius; x += 0.5f)
 	{
 		float y;
@@ -99,7 +100,7 @@ void Window::drawCircle(Circle& circle)
 			SDL_RenderDrawPoint(renderer, center.x + x, center.y - y);
 		}
 	}
-
+	// Draw border circle X
 	for (float y = -radius; y < radius; y += 0.5f)
 	{
 		float x = sqrtf(radius * radius - y * y);
@@ -114,6 +115,7 @@ void Window::drawCircle(Circle& circle)
 
 	SDL_SetRenderDrawColor(renderer,
 		fillColor.r, fillColor.g, fillColor.b, fillColor.a);
+	// Draw fill circle
 	for (float x = -radius; x < radius; x += 0.5f)
 	{
 		float y = sqrtf(radius * radius - x * x);
