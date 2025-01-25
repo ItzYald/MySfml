@@ -10,7 +10,7 @@ public:
 	void draw(AbstractWindow& window){}
 
 	float getRadius();
-	void setFadius(float radius);
+	void setRadius(float radius);
 
 };
 
