@@ -34,6 +34,5 @@ int SDL_main(int argc, char* argv[])
 		window.display();
     }
 
-    window.quit();
     return 0;
 }
