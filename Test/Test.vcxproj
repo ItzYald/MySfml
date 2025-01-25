@@ -130,23 +130,25 @@
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="ColorPoint.cpp" />
     <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="GradientLine.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="MySfml.cpp" />
     <ClCompile Include="Transformable.cpp" />
-    <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractWindow.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ColorPoint.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="GradientLine.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Transformable.h" />

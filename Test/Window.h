@@ -6,6 +6,7 @@
 #include "AbstractWindow.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "GradientLine.h"
 
 
 class Window : public AbstractWindow
@@ -18,6 +19,7 @@ private:
 
     void drawRect(Rectangle& rectangle);
     void drawCircle(Circle& circle);
+    void drawLine(GradientLine& line);
 
 public:
     Window(Vector2i size);

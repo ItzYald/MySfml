@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Figures">
+      <UniqueIdentifier>{f0b725a9-133f-4d14-94b5-9e701e11c169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Figures">
+      <UniqueIdentifier>{db3fe186-f0cc-48a5-bf2a-53e6e33041e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MySfml.cpp">
@@ -21,16 +27,7 @@
     <ClCompile Include="Window.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Circle.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Transformable.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Figure.cpp">
@@ -39,10 +36,21 @@
     <ClCompile Include="Color.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Исходные файлы\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="GradientLine.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorPoint.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -51,16 +59,10 @@
     <ClInclude Include="Drawable.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Rectangle.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="AbstractWindow.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Circle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Transformable.h">
@@ -73,6 +75,18 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Файлы заголовков\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Файлы заголовков\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="GradientLine.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorPoint.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

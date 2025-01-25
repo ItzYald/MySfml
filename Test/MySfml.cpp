@@ -19,12 +19,17 @@ int SDL_main(int argc, char* argv[])
     circle.setBorderColor(Color(10, 255, 10));
     circle.setBorderThickness(10);
 
+    GradientLine line = GradientLine(Vector2f(10, 300), Vector2f(400, 420));
+    line.setFirstPointColor(Color(10, 255, 10));
+    line.setSecondPointColor(Color(10, 10, 255));
+
     while (window.isOpen())
     {
         window.dispatchEvents();
 
 		window.draw(rect);
 		window.draw(circle);
+		window.draw(line);
 
 		window.display();
     }

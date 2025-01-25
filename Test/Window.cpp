@@ -127,6 +127,55 @@ void Window::drawCircle(Circle& circle)
 
 }
 
+void Window::drawLine(GradientLine& line)
+{
+	Vector2f delta = line.getSecondPointPosition() - line.getFirstPointPosition();
+	Vector2f firstPosition = line.getFirstPointPosition();
+	Vector2f secondPosition = line.getSecondPointPosition();
+	
+	Color firstColor = line.getFirstPointColor();
+	Color secondColor = line.getSecondPointColor();
+	Vector2f normalizeVector = delta.normalize();
+	if (delta.x > 0)
+	{
+		for (float x = 0; x < delta.x; x++)
+		{
+			float offsetK = x / delta.x;
+			Color gradientColor = Color(
+				firstColor.r * (1 - offsetK) + secondColor.r * offsetK,
+				firstColor.g * (1 - offsetK) + secondColor.g * offsetK,
+				firstColor.b * (1 - offsetK) + secondColor.b * offsetK,
+				firstColor.a * (1 - offsetK) + secondColor.a * offsetK
+			);
+			SDL_SetRenderDrawColor(renderer,
+				gradientColor.r, gradientColor.g, gradientColor.b, gradientColor.a);
+			SDL_RenderDrawPoint(renderer, 
+				firstPosition.x + x,
+				firstPosition.y + (firstPosition.x + x) * normalizeVector.y / normalizeVector.x);
+		}
+	}
+	else
+	{
+		for (float y = 0; y < delta.y; y++)
+		{
+			float offsetK = y / delta.x;
+			Color gradientColor = Color(
+				firstColor.r * (1 - offsetK) + secondColor.r * offsetK,
+				firstColor.g * (1 - offsetK) + secondColor.g * offsetK,
+				firstColor.b * (1 - offsetK) + secondColor.b * offsetK,
+				firstColor.a * (1 - offsetK) + secondColor.a * offsetK
+			);
+			SDL_SetRenderDrawColor(renderer,
+				gradientColor.r, gradientColor.g, gradientColor.b, gradientColor.a);
+			SDL_RenderDrawPoint(renderer,
+				firstPosition.x + (firstPosition.y + y) * normalizeVector.x / normalizeVector.y,
+				firstPosition.y + y
+				);
+		}
+	}
+	
+}
+
 void Window::draw(Drawable& drawableObject)
 {
 	Drawable* drawablePtr = &drawableObject;
@@ -146,6 +195,16 @@ void Window::draw(Drawable& drawableObject)
 		{
 			drawCircle(*circle);
 			circle = nullptr;
+			drawablePtr = nullptr;
+			return;
+		}
+	}
+	{
+		GradientLine* line = dynamic_cast<GradientLine*>(drawablePtr);
+		if (line != nullptr)
+		{
+			drawLine(*line);
+			line = nullptr;
 			drawablePtr = nullptr;
 			return;
 		}
