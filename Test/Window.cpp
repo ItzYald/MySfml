@@ -1,13 +1,13 @@
 #include "Window.h"
 
-Window::Window()
+Window::Window(Vector2i size)
 {
     window = NULL;
     renderer = NULL;
     SDL_Init(SDL_INIT_VIDEO);
 
-    window = SDL_CreateWindow("SDL Tutorial",
-        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("MySfml",
+        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, size.x, size.y, SDL_WINDOW_SHOWN);
 
     renderer =
         SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -26,31 +26,6 @@ void Window::dispatchEvents()
     }
 }
 
-void Window::draw(Drawable& drawableObject)
-{
-    Drawable* drawablePtr = &drawableObject;
-    {
-        Rectangle* rectangle = dynamic_cast<Rectangle*>(drawablePtr);
-        if (rectangle != nullptr)
-        {
-            drawRect(*rectangle);
-        }
-        rectangle = NULL;
-        drawablePtr = NULL;
-        return;
-    }
-    {
-        Circle* circle = dynamic_cast<Circle*>(drawablePtr);
-        if (circle != nullptr)
-        {
-            drawCircle(*circle);
-        }
-        circle = NULL;
-        drawablePtr = NULL;
-        return;
-    }
-    drawableObject.draw(*this);
-}
 
 bool Window::isOpen()
 {
@@ -90,10 +65,45 @@ void Window::drawRect(Rectangle& rectangle)
     Color borderColor = rectangle.getBorderColor();
     SDL_SetRenderDrawColor(renderer, borderColor.r, borderColor.g, borderColor.b, borderColor.a);
 
-    SDL_RenderDrawRect(renderer, sdlRect);
+    for (size_t i = 0; i < rectangle.getBorderThickness(); i++)
+    {
+        sdlRect->x -= 1;
+        sdlRect->y -= 1;
+        sdlRect->w += 2;
+        sdlRect->h += 2;
+        SDL_RenderDrawRect(renderer, sdlRect);
+    }
+
 }
 
 void Window::drawCircle(Circle& circle)
 {
 
 }
+
+void Window::draw(Drawable& drawableObject)
+{
+    Drawable* drawablePtr = &drawableObject;
+    {
+        Rectangle* rectangle = dynamic_cast<Rectangle*>(drawablePtr);
+        if (rectangle != nullptr)
+        {
+            drawRect(*rectangle);
+        }
+        rectangle = NULL;
+        drawablePtr = NULL;
+        return;
+    }
+    {
+        Circle* circle = dynamic_cast<Circle*>(drawablePtr);
+        if (circle != nullptr)
+        {
+            drawCircle(*circle);
+        }
+        circle = NULL;
+        drawablePtr = NULL;
+        return;
+    }
+    drawableObject.draw(*this);
+}
+

@@ -20,7 +20,6 @@ inline Vector2<T>::Vector2(T X, T Y)
 
 }
 
-
 template<typename T>
 template<typename U>
 inline Vector2<T>::Vector2(const Vector2<U>& vector) :
@@ -30,4 +29,5 @@ inline Vector2<T>::Vector2(const Vector2<U>& vector) :
 }
 
 typedef Vector2<float> Vector2f;
+typedef Vector2<int> Vector2i;
 

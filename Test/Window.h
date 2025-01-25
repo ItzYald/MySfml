@@ -20,7 +20,7 @@ private:
     void drawCircle(Circle& circle);
 
 public:
-    Window();
+    Window(Vector2i size);
 
     void dispatchEvents();
 

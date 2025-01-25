@@ -19,3 +19,13 @@ void Figure::setBorderColor(Color color)
 {
 	borderColor = color;
 }
+
+int Figure::getBorderThickness()
+{
+	return borderThickness;
+}
+
+void Figure::setBorderThickness(int thickness)
+{
+	borderThickness = thickness;
+}
