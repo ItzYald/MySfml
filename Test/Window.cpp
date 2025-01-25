@@ -127,7 +127,7 @@ void Window::drawCircle(Circle& circle)
 
 }
 
-void Window::drawLine(GradientLine& line)
+void Window::drawGradientLine(GradientLine& line)
 {
 	Vector2f delta = line.getSecondPointPosition() - line.getFirstPointPosition();
 	Vector2f firstPosition = line.getFirstPointPosition();
@@ -176,6 +176,16 @@ void Window::drawLine(GradientLine& line)
 	
 }
 
+void Window::drawSimpleLine(SimpleLine& line)
+{
+	Color color = line.getColor();
+	SDL_SetRenderDrawColor(renderer,
+		color.r, color.g, color.b, color.a);
+	SDL_RenderDrawLine(renderer,
+		line.getFirstPosition().x, line.getFirstPosition().y,
+		line.getSecondPosition().x, line.getSecondPosition().y);
+}
+
 void Window::draw(Drawable& drawableObject)
 {
 	Drawable* drawablePtr = &drawableObject;
@@ -203,7 +213,17 @@ void Window::draw(Drawable& drawableObject)
 		GradientLine* line = dynamic_cast<GradientLine*>(drawablePtr);
 		if (line != nullptr)
 		{
-			drawLine(*line);
+			drawGradientLine(*line);
+			line = nullptr;
+			drawablePtr = nullptr;
+			return;
+		}
+	}
+	{
+		SimpleLine* line = dynamic_cast<SimpleLine*>(drawablePtr);
+		if (line != nullptr)
+		{
+			drawSimpleLine(*line);
 			line = nullptr;
 			drawablePtr = nullptr;
 			return;

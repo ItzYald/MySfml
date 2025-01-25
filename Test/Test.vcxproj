@@ -135,6 +135,7 @@
     <ClCompile Include="GradientLine.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="MySfml.cpp" />
+    <ClCompile Include="SimpleLine.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="GradientLine.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SimpleLine.h" />
     <ClInclude Include="Transformable.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Window.h" />
