@@ -2,8 +2,14 @@
 
 GradientLine::GradientLine(Vector2f firstPointPosition, Vector2f secondPointPosition)
 {
-	this->firstPoint = ColorPoint(firstPointPosition);
-	this->secondPoint = ColorPoint(secondPointPosition);
+	firstPoint = ColorPoint(firstPointPosition);
+	secondPoint = ColorPoint(secondPointPosition);
+}
+
+GradientLine::GradientLine(ColorPoint firstPoint, ColorPoint secondPoint)
+{
+	this->firstPoint = firstPoint;
+	this->secondPoint = secondPoint;
 }
 
 void GradientLine::setFirstPointPosition(Vector2f position)

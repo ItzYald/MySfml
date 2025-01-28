@@ -133,9 +133,11 @@
     <ClCompile Include="ColorPoint.cpp" />
     <ClCompile Include="Figure.cpp" />
     <ClCompile Include="GradientLine.cpp" />
+    <ClCompile Include="GradientPolyline.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="MySfml.cpp" />
     <ClCompile Include="SimpleLine.cpp" />
+    <ClCompile Include="SimplePolyline.cpp" />
     <ClCompile Include="Transformable.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -150,9 +152,11 @@
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="GradientLine.h" />
+    <ClInclude Include="GradientPolyline.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SimpleLine.h" />
+    <ClInclude Include="SimplePolyline.h" />
     <ClInclude Include="Transformable.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Window.h" />

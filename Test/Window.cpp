@@ -138,7 +138,7 @@ void Window::drawGradientLine(GradientLine& line)
 	Vector2f normalizeVector = delta.normalize();
 	if (delta.x > 0)
 	{
-		for (float x = 0; x < delta.x; x++)
+		for (float x = 0; x < delta.x; x += 0.5f)
 		{
 			float offsetK = x / delta.x;
 			Color gradientColor = Color(
@@ -151,14 +151,14 @@ void Window::drawGradientLine(GradientLine& line)
 				gradientColor.r, gradientColor.g, gradientColor.b, gradientColor.a);
 			SDL_RenderDrawPoint(renderer, 
 				firstPosition.x + x,
-				firstPosition.y + (firstPosition.x + x) * normalizeVector.y / normalizeVector.x);
+				firstPosition.y + x * normalizeVector.y / normalizeVector.x);
 		}
 	}
 	else
 	{
-		for (float y = 0; y < delta.y; y++)
+		for (float y = 0; y < delta.y; y += 0.5f)
 		{
-			float offsetK = y / delta.x;
+			float offsetK = y / delta.y;
 			Color gradientColor = Color(
 				firstColor.r * (1 - offsetK) + secondColor.r * offsetK,
 				firstColor.g * (1 - offsetK) + secondColor.g * offsetK,
@@ -168,7 +168,7 @@ void Window::drawGradientLine(GradientLine& line)
 			SDL_SetRenderDrawColor(renderer,
 				gradientColor.r, gradientColor.g, gradientColor.b, gradientColor.a);
 			SDL_RenderDrawPoint(renderer,
-				firstPosition.x + (firstPosition.y + y) * normalizeVector.x / normalizeVector.y,
+				firstPosition.x + y * normalizeVector.x / normalizeVector.y,
 				firstPosition.y + y
 				);
 		}
@@ -184,6 +184,15 @@ void Window::drawSimpleLine(SimpleLine& line)
 	SDL_RenderDrawLine(renderer,
 		line.getFirstPosition().x, line.getFirstPosition().y,
 		line.getSecondPosition().x, line.getSecondPosition().y);
+}
+
+void Window::drawGradientPolyline(GradientPolyline& line)
+{
+	for (size_t i = 0; i < line.getPointsQuantity() - 1; i++)
+	{
+		GradientLine gradientLine = GradientLine(line.getPoint(i), line.getPoint(i + 1));
+		drawGradientLine(gradientLine);
+	}
 }
 
 void Window::draw(Drawable& drawableObject)
@@ -224,6 +233,16 @@ void Window::draw(Drawable& drawableObject)
 		if (line != nullptr)
 		{
 			drawSimpleLine(*line);
+			line = nullptr;
+			drawablePtr = nullptr;
+			return;
+		}
+	}
+	{
+		GradientPolyline* line = dynamic_cast<GradientPolyline*>(drawablePtr);
+		if (line != nullptr)
+		{
+			drawGradientPolyline(*line);
 			line = nullptr;
 			drawablePtr = nullptr;
 			return;

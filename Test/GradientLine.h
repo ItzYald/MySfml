@@ -11,7 +11,8 @@ private:
 public:
 
 	GradientLine() = default;
-	GradientLine(Vector2f firstPoint, Vector2f secondPointPosition);
+	GradientLine(Vector2f firstPointPosition, Vector2f secondPointPosition);
+	GradientLine(ColorPoint firstPoint, ColorPoint secondPointPosition);
 
 	void setFirstPointPosition(Vector2f position);
 	Vector2f getFirstPointPosition();

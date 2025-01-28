@@ -8,6 +8,7 @@
 #include "Circle.h"
 #include "GradientLine.h"
 #include "SimpleLine.h"
+#include "GradientPolyline.h"
 
 
 class Window : public AbstractWindow
@@ -22,6 +23,7 @@ private:
     void drawCircle(Circle& circle);
     void drawGradientLine(GradientLine& line);
     void drawSimpleLine(SimpleLine& line);
+    void drawGradientPolyline(GradientPolyline& line);
 
 public:
     Window(Vector2i size);
